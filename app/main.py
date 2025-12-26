@@ -43,6 +43,43 @@
 
 
 
+# from fastapi import FastAPI, UploadFile, File
+# from pydantic import BaseModel
+
+# from app.ocr_logic import extract_structured_data
+
+# app = FastAPI(
+#     title="Garment OCR Structured API",
+#     version="1.0.0"
+# )
+
+# class GarmentOCRResponse(BaseModel):
+#     branch: str
+#     bill_no: str
+#     garment_type: str
+#     category: str
+#     date: str
+#     customer_name: str
+#     customer_address: str
+
+
+# @app.post("/extract-garment-data", response_model=GarmentOCRResponse)
+# async def extract_garment_data(file: UploadFile = File(...)):
+#     image_bytes = await file.read()
+#     data = extract_structured_data(image_bytes)
+
+#     return {
+#         "branch": data.get("branch", ""),
+#         "bill_no": data.get("bill_no", ""),
+#         "garment_type": data.get("garment_type", ""),
+#         "category": data.get("category", ""),
+#         "date": data.get("date", ""),
+#         "customer_name": data.get("customer_name", ""),
+#         "customer_address": data.get("customer_address", "")
+#     }
+
+
+
 from fastapi import FastAPI, UploadFile, File
 from pydantic import BaseModel
 
@@ -52,6 +89,16 @@ app = FastAPI(
     title="Garment OCR Structured API",
     version="1.0.0"
 )
+
+# ✅ ROOT ROUTE (IMPORTANT)
+@app.get("/")
+def root():
+    return {
+        "status": "ok",
+        "message": "Garment OCR Structured API is running 🚀",
+        "docs": "/docs"
+    }
+
 
 class GarmentOCRResponse(BaseModel):
     branch: str
