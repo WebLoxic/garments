@@ -1,11 +1,17 @@
+import os
 import cv2
 import numpy as np
 import pytesseract
 import re
 
-pytesseract.pytesseract.tesseract_cmd = (
-    r"C:\Program Files\Tesseract-OCR\tesseract.exe"
-)
+# -------- Tesseract Path (Cross-Platform) --------
+if os.name == "nt":  # Windows (local)
+    pytesseract.pytesseract.tesseract_cmd = (
+        r"C:\Program Files\Tesseract-OCR\tesseract.exe"
+    )
+# Linux / Render:
+# tesseract system PATH se auto-detect hoga
+
 
 AREA_KEYWORDS = ["vihar", "nagar", "bagh", "colony", "sector", "city"]
 
