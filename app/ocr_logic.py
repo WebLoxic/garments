@@ -5,7 +5,7 @@ import pytesseract
 import re
 
 # -------- Tesseract Path (Cross-Platform) --------
-if os.name == "nt":  # Windows (local)
+if os.name == "nt":
     pytesseract.pytesseract.tesseract_cmd = (
         r"C:\Program Files\Tesseract-OCR\tesseract.exe"
     )
